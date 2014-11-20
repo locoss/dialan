@@ -1,0 +1,52 @@
+<?php
+include( 'variables.php');
+//Проверка sms	
+$sms_tv = $_POST['sms3'];	
+if ($_POST['tp_radio3'] == $base or $sms_tv <> 0 ){
+	$sms_tv = 'ДА';
+}
+else 
+{
+	$sms_tv = 'НЕТ';
+	}
+//Проверка страхование кабеля	
+$insurance_tv = $_POST['insurance3'];	
+if ($insurance_tv <> 0 ){
+	$insurance_tv = 'ДА';
+}
+else 
+{
+	$insurance_tv = 'НЕТ';
+	}
+
+//Проверка тарифа
+$tariff = $_POST['tp_radio3'];
+if ($tariff == $base){
+	$tariff = '"Базовый"('.$base.'грн/месяц)';
+	}
+	else{
+		$tariff = '"Социальный"('.$social.'грн/месяц)';
+		}
+		
+		
+$message = "                 Телевидение \nФИО:$_POST[name3]\nАдрес:$_POST[address3]\nТелефон:$_POST[phone3]\nE-mail:$_POST[e_mail3]\nТариф:$tariff\n
+
+             Дополнительные опции:\nСМС-информирование:  $sms_tv\nСтрахование кабеля:  $insurance_tv"; 
+
+
+		
+mail ("tvservice@mail.com","Заявка на подключение", $message);
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dialan провайдер телекоммуникационных услуг</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="text-align:center">
+<?php include 'index.phtml';?>
+</body>
+</html>

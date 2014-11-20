@@ -1,0 +1,48 @@
+<?php echo $this->headTitle('Услуги', 'PREPEND'); ?>
+
+<h1>Наши услуги</h1>
+
+<?php if(Zend_Auth::getInstance()->hasIdentity()):?>
+			<?php $urlAdd = $this->url(array(
+										'controller' 	=> 'edit-content', 
+										'action'		=> 'add-service',
+											), 
+									'default'
+									);
+			?>
+<p>
+	<a href = "<?php echo $urlAdd;?>">Добавить</a>
+</p>
+<?php endif;?> <div class="services">
+<ul>	
+	<?php foreach ($this->services as $service) :?>
+		<li>
+			<?php if($service['image'] != ''): ?>
+				<img alt="<?php echo $service['title']; ?>" src="<?php echo "/" . $this->imagesPath . "/" . $service['image']; ?>">
+			<?php endif; ?>
+			<?php $url = $this->url(array('id' => $service['id']), 'fullService'); ?>
+			<strong><a href="<?php echo $url;?>"><?php echo $service['title']; ?></a></strong>
+			<p><?php echo $service['description']; ?></p>
+			
+			<?php if(Zend_Auth::getInstance()->hasIdentity()):?>
+			<?php $urlEdit = $this->url(array(
+										'controller' 	=> 'edit-content', 
+										'action'		=> 'edit-service',
+										'id' 			=> $service['id']), 
+								'default'
+								); 
+			$urlDelete = $this->url(array(
+										'controller' 	=> 'edit-content',
+										'action'		=> 'delete-service',
+										'id' 			=> $service['id']),
+								'default'
+								);
+		?>
+	<p>
+		<a href = "<?php echo $urlDelete;?>">Удалить</a> | <a href = "<?php echo $urlEdit;?>">Редактировать</a>
+	</p>
+	<?php endif;?>	
+		</li>
+	<?php endforeach;?>
+</ul>
+</div>

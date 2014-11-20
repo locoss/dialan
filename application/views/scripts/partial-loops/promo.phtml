@@ -1,0 +1,11 @@
+<li>
+	
+	<?php $url = $this->url(array('id' => $this->id), 'fullPromo'); ?>
+			<?php if($this->image != ''): ?>
+				<a href="<?php echo $url;?>">	
+					<img 	alt="<?php echo $this->title; ?>" 
+							src="<?php echo "/images/myimages/promo/" .  $this->image; ?>">
+				</a>
+			<?php endif; ?>
+	
+</li>

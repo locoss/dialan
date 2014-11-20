@@ -1,0 +1,72 @@
+<?php
+
+include('variables.php');
+//Проверка "Dr.Web"
+$web_net_tv = $_POST['dr_web'];
+if ($_POST['tp_radio'] == $premium or $web_net_tv <> 0 ){
+	$web_net_tv = 'ДА';
+}
+else 
+{
+	$web_net_tv = 'НЕТ';
+	}
+	
+$social_net_tv = $_POST['social'];
+//Проверка WI-FI свобода
+if ($_POST['tp_radio'] == $premium or $social_net_tv <> 0 ){
+	$social_net_tv = 'ДА';
+}
+else 
+{
+	$social_net_tv = 'НЕТ';
+	}
+//Проверка WI-FI свобода+роутер
+$social_r = $_POST['social_r'];
+
+if ($_POST['tp_radio'] == $premium or $social_r <> 0 ){
+	$social_r = 'ДА';
+}
+else 
+{
+	$social_r = 'НЕТ';
+	}
+//Проверка Детский интернет	
+	$child_net_tv = $_POST['child'];
+	
+if ($_POST['tp_radio'] == $premium or $child_net_tv <> 0 ){
+	$child_net_tv = 'ДА';
+}
+else 
+{
+	$child_net_tv = 'НЕТ';
+	}
+	
+//Проверка тарифа
+$tariff = $_POST['tp_radio'];
+if ($tariff == $premium){
+	$tariff = '"Премиум"('.$premium.'грн/месяц)';
+	}
+	else{
+		$tariff = '"Стандарт"('.$standart.'грн/месяц)';
+		}
+$message = "                 Интернет+ТВ \nФИО:$_POST[name]\nАдрес:$_POST[address]\nТелефон:$_POST[phone]\nE-mail:$_POST[e_mail]\nТариф:$tariff\n
+
+             Дополнительные опции:\nСМС-информирование:  ДА\nСтрахование кабеля:  ДА\nАнтивирус dr.Web:    $web_net_tv\nWI-FI свобода:       $social_net_tv\nРегистрация WI-FI:   $social_r\nДетский интернет:    $child_net_tv"; 
+
+
+		
+mail ("tvservice@mail.com","Заявка на подключение", $message);
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dialan провайдер телекоммуникационных услуг</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="text-align:center" >
+<?php include('index.phtml');?>	
+</body>
+</html>

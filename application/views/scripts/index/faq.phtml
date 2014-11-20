@@ -1,0 +1,19 @@
+<?php 
+	$this->headTitle('F.A.Q.', 'PREPEND');
+
+	$this->headMeta()	->appendName('keywords', $this->keywords)
+						->appendName('description', $this->description); 	
+	?>
+	
+	
+	<h1>FAQ</h1>
+	
+	<?php if(Zend_Auth::getInstance()->hasIdentity()):?>
+	<?php $url = $this->url(array('controller' => 'edit-content', 'action' => 'edit-page', 'id' => 2), 'default'); ?>
+	<p><a href = "<?php echo $url;?>">Редактировать</a></p>
+	<?php endif;?>
+	
+	<?php echo $this->textpage;?>
+	
+
+

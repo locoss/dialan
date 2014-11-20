@@ -1,0 +1,345 @@
+<?php
+include( 'variables.php');
+?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dialan провайдер телекоммуникационных услуг</title>
+<link rel="stylesheet" href="slider/themes/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="slider/nivo-slider.css" type="text/css" media="screen" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="style_modal.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="slider/jquery-1.9.1.min.js"></script>
+ <script type="text/javascript" src="slider/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="scripts/modal_tabs.js"></script>
+<script type="text/javascript" src="scripts/validator.js"></script>
+<script type="text/javascript" src="scripts/prise_sum.js"></script>
+ <script>
+ function show_hide(id){
+   var re = document.getElementById(id);
+   var ar = document.getElementById('info');
+   if (re.style.display='none'){
+      re.style.display = 'block';
+	  ar.style.display = 'block';
+   }
+ }
+    </script>
+</head>
+<body>
+<!--[if lt IE 9]>
+ <style>
+  label.switch {width: auto; height: auto; }
+  span.switch { display: none !important; }
+   .e8{ display:block !important;}
+ </style>
+<![endif]-->
+<div class="container">
+
+
+<div class="main_menu">
+
+<tr>
+<td style="width:40%"><div class="logo"></div></td>
+<td style="width:20%"> <div class="connect"><a href="#dialog" name="modal">Подключиться</a></div></td>
+
+</div>
+
+<div class="content">
+  
+
+
+	
+	<div id="content" class="clearfix">
+  
+<div id="boxes">
+
+			<div id="dialog" class="window">
+<div id="info"></div>
+
+               
+<div id="zayavka"><a href="#" class="close"/> <img style="border:none"src="images/exit.png" /></a></div>
+	<ul class="tabs tabs1"><p>Заявка на подключение</p>
+		<li class="t1 tab-current"><a class="w1"><span>Интернет+ТВ</span></a></li>
+		<li class="t2"><a class="w1"><span>Интернет</span></a></li>
+		<li class="t3"><a class="w1"><span>Телевидение</span></a></li>
+		
+	</ul>
+<div class="t1">
+
+<form action="reg_tv_net.php" method="post" name="form1" onSubmit="return validate_form ( );">
+<table>
+<tbody>
+<tr> 
+<td>
+<div class="lable 1text">ФИО:<span style="color:red">*</span><span id="name11" style="font-weight:100; display:none; color:red; font-size:14px">&nbsp Заполните поле!</span></div>
+<div id="text"><input class="textbox" type="text" name="name" id="name1" maxlength="30"/></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">Адрес:</div>
+<div id="text"><input class="textbox" type="text" name="address"  id="address1"  maxlength="40"/></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">Телефон:<span style="color:red">*</span><span id="phone11" style=" font-weight:100; display:none; color:red; font-size:14px">&nbsp Заполните поле!</span></div>
+<div id="text"><input class="textbox" type="text" name="phone" id="phone1" value="+380"  maxlength="16" /></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">E-mail:</div>
+<div id="text"><input class="textbox" type="text" name="e_mail"  maxlength="30" /></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div style="padding-top:20px" class="lable 2text">Выберите тариф:</div>
+<div class="item_box" onclick='prise () ;' ><label class="switch"><input type="radio" value="<?php echo $standart; ?>" name="tp_radio" id="radio1" checked="checked" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info1'); return false;">Тарифный план «Стандарт» (<?php echo $standart; ?> грн/месяц)</a>  </div>
+<div id="info1" class="info"><div class="info_text">- Подключение за 1грн<br />- Интернет со скоростью до 100Мбит/с<br />- 61 канал кабельного ТВ<br />- 56 каналов цифрового ТВ<br />- СМС-информирование<br />- Страхование кабеля <a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+<div class="item_box" onclick='prise () ;'><label class="switch"><input type="radio" value="<?php echo $premium; ?>" name="tp_radio" id="radio2"/><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info2'); return false;">Тарифный план «Премиум» (<?php echo $premium; ?> грн/месяц)</a> </div>
+<div id="info2" class="info"><div class="info_text">- Интернет со скоростью до 1Гбит/с<br />- 61 канал кабельного ТВ<br />- 56 каналов цифрового ТВ<br />- SMS-информирование<br />- Страхование кабеля<br />- Антивирус "Dr.Web"<br />- "WI-FI свобода"<br />- "Детский интернет"  <a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+</td>
+</tr>
+<tr>
+<td>
+<div style="padding-top:20px" class="lable 2text">Дополнительные опции:</div>
+<div class="item_box2" onclick='sumt () ;'><label class="switch"><input type="checkbox" value="<?php echo $sms; ?>" name="sms" id="sms1" checked="checked" disabled="disabled"/><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info3'); return false;"> "SMS-информирование" (<?php echo $sms; ?> грн/месяц)</a> </div>
+<div id="info3" class="info"><div class="info_text">Позволяет получать SMS сообщения с информацией о состоянии личного счета, акциях и новых предложениях.</div><div class="info_footer"></div></div>
+<div class="item_box2" onclick='sumt () ;'><label class="switch"><input type="checkbox" value="<?php echo $insurance2; ?>" name="insurance" id="insurance1" checked="checked" disabled="disabled" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info4'); return false;">"Страхование ТВ и Интернет кабеля" (<?php echo $insurance2; ?> грн/месяц) </a></div>
+<div id="info4" class="info"><div class="info_text">Дает возможность 3 раза в месяц бесплатно вызвать мастера для ремонта кабеля в вашей квартире.</div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='sumt () ;'><label class="switch"><input type="checkbox" value="<?php echo $dr_web; ?>" name="dr_web" id="dr_web1" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info5'); return false;"> Антивирус "Dr.Web" (<?php echo $dr_web; ?> грн/месяц) </a> </div>
+<div id="info5" class="info"><div class="info_text">Предоставляется комплексная защита от интернет-угроз при помощи антивируса "Dr.Web"(Антивирус, Антиспам, Антишпион, Веб-антивирус)<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='sumt () ;'><label class="switch"><input type="checkbox" value="<?php echo $child; ?>" name="child" id="child1"  /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info8'); return false;">"Детский интернет" (<?php echo $child; ?> грн/месяц)</a> </div>
+<div id="info8" class="info"><div class="info_text">Предоставляется фильтрация нежелательного контента дабы недопустить его просмотр конечным пользователем(порнография, насилие, наркотики, терроризм, ...).<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='doMenu(); sumt(); '><label class="switch"><input type="checkbox" value="<?php echo $social_wi_fi; ?>" name="social" id="social1" /><span class="switch"></span></label><a href="#" onclick="show_hide('info6'); return false;">&nbsp "WI-FI свобода" (<?php echo $social_wi_fi; ?> грн/месяц)</a> </div>
+<div id="info6" class="info"><div class="info_text">С помощью беспроводной технологии Wi-Fi предоставляется доступ в Интернет из любой точки покрытия сети.<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<div id="chapter1" class="item_box2" onclick='sumt () ;'><label class="switch"><input type="checkbox" value="-<?php echo $social_wi_fi; ?>" disabled="disabled" name="social_r" id="social_r1"  /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info7'); return false;"> Стать участником программы "WI-FI свобода"</a></div>
+<div id="info7" class="info"><div class="info_text">При регистрации своего рутера в программе "WI-FI свобода" Вы получаете бесплатный доступ ко всем Хот-стопам города.<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+function doMenu() {
+ 
+    if ((document.getElementById('social1').checked == true) &&
+		 (document.getElementById('social1').disabled == false)) {
+      chapter1.style.display = 'block';
+	  document.getElementById('social_r1').disabled = false;
+	
+    }
+    else {
+      chapter1.style.display = 'none';
+	  document.getElementById('social_r1').disabled = true;
+	  document.getElementById('social_r1').checked =false;
+    }  // if..else
+  }  // if
+function doMenu2() {
+ 
+    if ((document.getElementById('social2').checked == true) &&
+		 (document.getElementById('social2').disabled == false)) {
+      chapter2.style.display = 'block';
+	  document.getElementById('social_r2').disabled = false;
+	
+    }
+    else {
+      chapter2.style.display = 'none';
+	  document.getElementById('social_r2').disabled = true;
+	  document.getElementById('social_r2').checked =false;
+    }  // if..else
+  }  // if
+  </SCRIPT>
+</td>
+</tr>
+<tr> 
+<td>
+<div id="opt">-опция входит в тарифный план</div>
+<div id="opt2">-опция оплачивается отдельно</div>
+<div class="e8"></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div id="abon">Абонплата в месяц:&nbsp <span id="sum"><?php echo $standart; ?></span>&nbsp грн.</div>
+</td>
+</tr>
+<tr> 
+<td>
+<input class="button1" type="submit" value="Отправить" />
+</td>
+</tr>
+</tbody>
+</table>
+</form>
+</div>
+
+
+
+<div class="t2">
+<form action="reg_net.php" method="post" name="form2" onSubmit="return validate_form2 ( );">
+<table>
+<tbody>
+<tr> 
+<td>
+<div class="lable 1text">ФИО:<span style="color:red">*</span><span id="name22" style="font-weight:100; display:none; color:red; font-size:14px">&nbsp Заполните поле!</span></div>
+<div id="text"><input class="textbox" type="text" name="name2" id="name2"  maxlength="30"/></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">Адрес:</div>
+<div id="text"><input class="textbox" type="text" name="address2"  id="address2"  maxlength="40"/></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">Телефон:<span style="color:red">*</span><span id="phone22" style=" font-weight:100; display:none; color:red; font-size:14px">&nbsp Заполните поле!</span></div>
+<div id="text"><input class="textbox" type="text" name="phone2" id="phone2" value="+380" maxlength="16" /></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">E-mail:</div>
+<div id="text"><input class="textbox" type="text" name="e-mail2"  maxlength="30" /></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div style="padding-top:20px" class="lable 2text">Выберите тариф:</div>
+<div class="item_box" onclick='prise2 () ;'s><label class="switch"><input type="radio" value="<?php echo $start; ?>" name="tp_radio2" id="radio3" checked="checked"  /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info9'); return false;">  Тарифный план «Старт» (<?php echo $start; ?> грн/месяц) </a> </div>
+<div id="info9" class="info"><div class="info_text">Интернет со скоростью до 10Мбит/с<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+
+<div class="item_box" onclick='prise2 () ;'><label class="switch"><input type="radio" value="<?php echo $norma; ?>" name="tp_radio2" id="radio4"/><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info10'); return false;"> Тарифный план «Норма» (<?php echo $norma; ?> грн/месяц)</a> </div>
+<div id="info10" class="info"><div class="info_text">- Интернет со скоростью до 50Мбит/с<br />- SMS-информирование <a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<div class="item_box" onclick='prise2 () ;'><label class="switch"><input type="radio" value="<?php echo $maximum; ?>" name="tp_radio2" id="radio5"/><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info11'); return false;"> Тарифный план «Максимум» (<?php echo $maximum; ?> грн/месяц) </a> </div>
+<div id="info11" class="info"><div class="info_text">- Интернет со скоростью до 100Мбит/с<br />- SMS-информирование<br />- Страхование кабеля <a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div style="padding-top:20px" class="lable 2text">Дополнительные опции:</div>
+<div class="item_box2" onclick='sumt2 () ;'><label class="switch"><input type="checkbox" value="<?php echo $sms; ?>" name="sms2" id="sms2" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info12'); return false;"> "SMS-информирование" (<?php echo $sms; ?> грн/месяц)</a> </div>
+<div id="info12" class="info"><div class="info_text">Позволяет получать SMS сообщения с информацией о состоянии личного счета, акциях и новых предложениях.</div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='sumt2 () ;'><label class="switch"><input type="checkbox" value="<?php echo $insurance; ?>" name="insurance2" id="insurance2"  /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info13'); return false;"> "Страхование Интернет кабеля" (<?php echo $insurance; ?> грн/месяц) </a></div>
+<div id="info13" class="info"><div class="info_text">Дает возможность 3 раза в месяц бесплатно вызвать мастера для ремонта кабеля в вашей квартире.</div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='sumt2 () ;'><label class="switch"><input type="checkbox" value="<?php echo $dr_web2; ?>" name="dr_web2" id="dr_web2" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info14'); return false;"> Антивирус "Dr.Web" (<?php echo $dr_web2; ?> грн/месяц)</a>  </div>
+<div id="info14" class="info"><div class="info_text">Предоставляется комплексная защита от интернет-угроз при помощи антивируса "Dr.Web"(Антивирус, Антиспам, Антишпион, Веб-антивирус)<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='sumt2 () ;'><label class="switch"><input type="checkbox" value="<?php echo $child2; ?>" name="child2" id="child2"  /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info15'); return false;"> "Детский интернет" (<?php echo $child2; ?> грн/месяц) </a> </div>
+<div id="info15" class="info"><div class="info_text">Предоставляется фильтрация нежелательного контента дабы недопустить его просмотр конечным пользователем(порнография, насилие, наркотики, терроризм, ...).<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+</td>
+</tr>
+<tr> 
+<td>
+<div id="opt">-опция входит в тарифный план</div>
+<div id="opt2">-опция оплачивается отдельно</div>
+<div class="e8"></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div id="abon">Абонплата в месяц:&nbsp <span id="sum2"><?php echo $start; ?></span>&nbsp грн.</div>
+</td>
+</tr>
+<tr> 
+<td>
+<input class="button1" type="submit" value="Отправить" />
+</td>
+</tr>
+</tbody>
+</table>
+</form>
+</div>
+<div class="t3">
+<form action="reg_tv.php" method="post" name="form3" onSubmit="return validate_form3 ( );">
+<table>
+<tbody>
+<tr> 
+<td>
+<div class="lable 1text">ФИО:<span style="color:red">*</span><span id="name33" style="font-weight:100; display:none; color:red; font-size:14px">&nbsp Заполните поле!</span></div>
+<div id="text"><input class="textbox" type="text" name="name3" id="name3"  maxlength="30"/></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">Адрес:</div>
+<div id="text"><input class="textbox" type="text" name="address3"  id="address3" maxlength="40"/></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">Телефон:<span style="color:red">*</span><span id="phone33" style=" font-weight:100; display:none; color:red; font-size:14px">&nbsp Заполните поле!</span></div>
+<div id="text"><input class="textbox" type="text" name="phone3" id="phone3" value="+380"  maxlength="16" /></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div class="lable 1text">E-mail:</div>
+<div id="text"><input class="textbox" type="text" name="e-mail3"  maxlength="30" /></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div style="padding-top:20px" class="lable 2text">Выберите тариф:</div>
+<div class="item_box" onclick='prise3 () ;'><label class="switch"><input type="radio" value="<?php echo $social; ?>" name="tp_radio3" id="radio6" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info18'); return false;"> Тарифный план «Социальный» (<?php echo $social; ?> грн/месяц) </a>  </div>
+<div id="info18" class="info"><div class="info_text">Включает в себя 15 каналов украинского телевидения.<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+<div class="item_box" onclick='prise3 () ;'><label class="switch"><input type="radio" value="<?php echo $base; ?>" name="tp_radio3" id="radio7" checked="checked" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info19'); return false;"> Тарифный план «Базовый» (<?php echo $base; ?> грн/месяц) </a> </div>
+<div id="info19" class="info"><div class="info_text">- 61 мировых и украинских каналов аналогового телевидения<br />- 56 мировых и украинских каналов цифрового телевидения .<a class="info_next" href="index.html">Подробнее</a></div><div class="info_footer"></div></div>
+
+</td>
+</tr>
+<tr> 
+<td>
+<div style="padding-top:20px" class="lable 2text">Дополнительные опции:</div>
+<div class="item_box2" onclick='sumt3 () ;'><label class="switch"><input type="checkbox" value="<?php echo $sms; ?>" name="sms3" id="sms3" checked="checked" disabled="disabled" /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info20'); return false;"> "SMS-информирование" (<?php echo $sms; ?> грн/месяц) </a> </div>
+<div id="info20" class="info"><div class="info_text">Позволяет получать SMS сообщения с информацией о состоянии личного счета, акциях и новых предложениях.</div><div class="info_footer"></div></div>
+
+<div class="item_box2" onclick='sumt3 () ;'><label class="switch"><input type="checkbox" value="<?php echo $insurance; ?>" name="insurance3" id="insurance3"  /><span class="switch"></span></label>&nbsp <a href="#" onclick="show_hide('info21'); return false;"> "Страхование ТВ кабеля" (<?php echo $insurance; ?> грн/месяц) </a> </div>
+<div id="info21" class="info"><div class="info_text">Дает возможность 3 раза в месяц бесплатно вызвать мастера для ремонта кабеля в вашей квартире.</div><div class="info_footer"></div></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div id="opt">-опция входит в тарифный план</div>
+<div id="opt2">-опция оплачивается отдельно</div>
+<div class="e8"></div>
+</td>
+</tr>
+<tr> 
+<td>
+<div id="abon">Абонплата в месяц:&nbsp <span id="sum3"><?php echo $base; ?></span>&nbsp грн.</div>
+</td>
+</tr>
+<tr> 
+<td>
+<input class="button1" type="submit" value="Отправить" />
+</td>
+</tr>
+</tbody>
+</table>
+</form>
+</div>
+
+				 
+               
+			</div>
+           
+			<div id="mask"></div>
+           
+		</div>
+	
+</div>
+
+</body>
+</html>

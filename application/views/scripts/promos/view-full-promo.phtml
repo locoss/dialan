@@ -1,0 +1,12 @@
+<?php echo $this->headTitle($this->promo['title'], 'PREPEND'); ?>
+
+<?php 
+	
+	$this->headMeta()	->appendName('keywords', $this->promo['keywords'])
+						->appendName('description', $this->promo['description']);
+	?>
+	
+	<h1><?php echo $this->promo['title'];?></h1>
+	
+	<?php echo $this->promo['textpromo']; ?>
+

@@ -1,0 +1,53 @@
+<?php echo $this->headTitle('Акции', 'PREPEND'); ?>
+
+<h1>Наши Акции</h1>
+
+<?php if(Zend_Auth::getInstance()->hasIdentity()):?>
+			<?php $urlAdd = $this->url(array(
+										'controller' 	=> 'edit-content', 
+										'action'		=> 'add-promo',
+											), 
+									'default'
+									);
+			?>
+<p>
+	<a href = "<?php echo $urlAdd;?>">Добавить</a>
+</p>
+<?php endif;?> 
+<div class="promo">
+<ul>	
+	<?php foreach ($this->promos as $promo) :?>
+		<li>
+			<?php $url = $this->url(array('id' => $promo['id']), 'fullPromo'); ?>
+			<?php if($promo['image'] != ''): ?>
+				<a href="<?php echo $url;?>">	
+					<img 	alt="<?php echo $promo['title']; ?>" 
+							src="<?php echo "/" . $this->imagesPath . "/" . "promo" . "/" .  $promo['image']; ?>">
+				</a>
+			<?php endif; ?>
+			
+			
+			
+			
+			<?php if(Zend_Auth::getInstance()->hasIdentity()):?>
+			<?php $urlEdit = $this->url(array(
+										'controller' 	=> 'edit-content', 
+										'action'		=> 'edit-promo',
+										'id' 			=> $promo['id']), 
+								'default'
+								); 
+			$urlDelete = $this->url(array(
+										'controller' 	=> 'edit-content',
+										'action'		=> 'delete-promo',
+										'id' 			=> $promo['id']),
+								'default'
+								);
+		?>
+	<p style="font-size: 12px;">
+		<a href = "<?php echo $urlDelete;?>">Удалить</a> | <a href = "<?php echo $urlEdit;?>">Редактировать</a>
+	</p>
+	<?php endif;?>	
+		</li>
+	<?php endforeach;?>
+</ul>
+</div>

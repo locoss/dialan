@@ -1,0 +1,87 @@
+﻿<?php echo $this->doctype(); ?>
+
+<html>
+
+<head>
+    <?php echo $this->headTitle(); ?>    
+    <?php echo $this->headMeta(); ?>
+		
+	<?php echo $this->headLink(); ?>
+	<?php echo $this->headScript(); ?>
+	
+	
+
+</head>
+
+<body>	
+<div id="tail-top">
+	<div class="tail-bottom">
+		<div class="body-bg">
+			<!-- HEADER -->
+			<div id="header">
+				
+				<!-- IMAGES -->
+				<div class="row-1">
+					<!-- <div class="fleft"><a href="#"><img src="/images/logo.gif" alt="" /></a> </div>  -->	
+					<div class="fright"><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'),'default');?>"><img src="/images/logoDialan.jpg" alt="" /></a><!--  --></div>
+				</div>
+
+				<div class="row-2">
+					<?php echo $this->navigation()->menu(); ?>
+					
+				</div>
+				<div class="extra">
+					<?php echo $this->render('but-menu.phtml');?>
+				</div>
+				
+				<div id="container">
+					<?php echo $this->render('slider.phtml');?>	
+				</div>
+			
+			</div>
+
+			<!-- CONTENT -->
+
+			<?php echo $this->render('order.phtml');?>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div id="content">
+				<div class="tail-right">
+					<div class="wrapper">
+						<div class="col-1">
+							<?php echo $this->layout()->content; ?>
+							
+							
+							
+							<a class="scrollup-l" href="#">up</a>
+						</div>
+							
+						<div class="col-2">
+								<?php echo $this->events();?>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- FOOTER -->
+
+			
+
+	</div>
+</div>
+
+</div><div id="footer">
+			    <div class="copy"><?php echo $this->render('copyright.phtml');?></div>
+			</div>
+</body>
+
+</html>
+

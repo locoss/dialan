@@ -1,0 +1,77 @@
+<?php
+include( 'variables.php');
+//Проверка "Dr.Web"
+$web_net = $_POST['dr_web2'];
+if ($web_net <> 0 ){
+	$web_net= 'ДА';
+}
+else 
+{
+	$web_net = 'НЕТ';
+	}
+	
+//Проверка Детский интернет	
+$child_net = $_POST['child2'];	
+if ($child_net <> 0 ){
+	$child_net = 'ДА';
+}
+else 
+{
+	$child_net = 'НЕТ';
+	}
+
+//Проверка sms	
+$sms_net= $_POST['sms2'];	
+if ($_POST['tp_radio2'] == $maximum or $_POST['tp_radio2'] == $norma or $sms_net <> 0 ){
+	$sms_net = 'ДА';
+}
+else 
+{
+	$sms_net = 'НЕТ';
+	}
+	
+//Проверка страхование кабеля	
+$insurance_net= $_POST['insurance2'];
+if ($_POST['tp_radio2'] == $maximum or $insurance_net <> 0){
+	$insurance_net = 'ДА';
+}
+else 
+{
+	$insurance_net = 'НЕТ';
+	}
+
+//Проверка тарифа
+$tariff = $_POST['tp_radio2'];
+if ($tariff == $maximum ){
+	$tariff = '"Максимум"('.$maximum.'грн/месяц)';
+}
+else if ($tariff == $norma ){
+	$tariff = '"Норма"('.$norma.'грн/месяц)';
+	}
+else if ($tariff == $start){
+	$tariff = '"Старт"('.$start. 'грн/месяц)';
+	}
+
+		
+		
+$message = "                 Интернет \nФИО:$_POST[name2]\nАдрес:$_POST[address2]\nТелефон:$_POST[phone2]\nE-mail:$_POST[e_mail2]\nТариф:$tariff\n
+
+             Дополнительные опции:\nСМС-информирование:  $sms_net\nСтрахование кабеля:  $insurance_net\nАнтивирус dr.Web:    $web_net\nДетский интернет:    $child_net"; 
+
+
+		
+mail ("tvservice@mail.com","Заявка на подключение", $message);
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dialan провайдер телекоммуникационных услуг</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="text-align:center">
+<?php include 'index.phtml';?>
+</body>
+</html>
